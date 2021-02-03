@@ -3,7 +3,7 @@ template<typename T>
 struct Node
 {
 public:
-	T m_data;
-	Node<T>* m_next;
-	Node<T>* m_prvious;
+	T data;
+	Node<T>* next;
+	Node<T>* previous;
 };
