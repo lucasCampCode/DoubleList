@@ -70,6 +70,12 @@ inline Iterator<T> List<T>::end()
 template<typename T>
 inline bool List<T>::contains(const T& value)
 {
+	Iterator<T> iter = begin();
+	while (iter != end())
+	{
+		if (value == iter.m_current->data)
+			return true;
+	}
 	return false;
 }
 
@@ -140,8 +146,6 @@ inline void List<T>::print() const
 {
 }
 
-
-
 template<typename T>
 inline void List<T>::initilize()
 {
@@ -161,8 +165,12 @@ inline bool List<T>::isEmpty() const
 template<typename T>
 inline bool List<T>::getData(Iterator<T>& iter, int index)
 {
-
-	return false;
+	iter = begin();
+	if (index < 0 || index > getLength())
+		return false;
+	for(int i = 0; i < index; i++)
+		iter++
+	return true;
 }
 
 template<typename T>
