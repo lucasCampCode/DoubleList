@@ -1,4 +1,5 @@
 #pragma once
+#include "Node.h"
 template<typename T>
 class Iterator
 {
@@ -29,13 +30,15 @@ inline Iterator<T>::Iterator(Node<T>* node)
 template<typename T>
 inline Iterator<T> Iterator<T>::operator++()
 {
-	return Iterator<T>(m_current->next);
+	m_current = m_current->next;
+	return this;
 }
 
 template<typename T>
 inline Iterator<T> Iterator<T>::operator--()
 {
-	return Iterator<T>(m_current->previous);
+	m_current = m_current->previous;
+	return this;
 }
 
 template<typename T>
