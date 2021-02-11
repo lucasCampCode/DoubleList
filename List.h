@@ -317,12 +317,17 @@ inline int List<T>::getLength()
 {
 	return m_nodeCount;
 }
-
+/// <summary>
+/// creates a deep copy of the otehr list to this list
+/// </summary>
+/// <typeparam name="T"></typeparam>
+/// <param name="otherList"></param>
+/// <returns></returns>
 template<typename T>
 inline List<T>& List<T>::operator=(List<T>& otherList)
 {
-	destroy();//removes old list
-	copyList(otherList);//replaces with a new list
+	for (Iterator<T> iter = otherList.begin(); iter != otherList.end(); iter++)
+		pushBack(*iter);
 }
 /// <summary>
 /// simple bubble sort exchanging values not addresses
