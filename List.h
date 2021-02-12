@@ -6,7 +6,7 @@ class List
 {
 public:
 	List<T>() { initilize(); };
-	List<T>(List<T>& list);
+	List<T>(List<T>& list) { copyList(list); };
 	~List<T>() { destroy(); };
 	void initilize();
 	bool isEmpty();
