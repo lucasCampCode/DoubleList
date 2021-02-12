@@ -318,7 +318,7 @@ inline int List<T>::getLength()
 	return m_nodeCount;
 }
 /// <summary>
-/// creates a deep copy of the otehr list to this list
+/// creates mimic of the other list
 /// </summary>
 /// <typeparam name="T"></typeparam>
 /// <param name="otherList"></param>
@@ -326,8 +326,9 @@ inline int List<T>::getLength()
 template<typename T>
 inline List<T>& List<T>::operator=(List<T>& otherList)
 {
-	for (Iterator<T> iter = otherList.begin(); iter != otherList.end(); iter++)
-		pushBack(*iter);
+	m_first = otherList.m_first;
+	m_last = otherList.m_last;
+	m_nodeCount = otherList.m_nodeCount;
 }
 /// <summary>
 /// simple bubble sort exchanging values not addresses
@@ -352,14 +353,13 @@ inline void List<T>::sort()
 	}
 }
 /// <summary>
-/// copys the list nodes to incriment through
+/// makes a deep copy of the list passed through
 /// </summary>
 /// <typeparam name="T"></typeparam>
 /// <param name="other"></param>
 template<typename T>
 inline void List<T>::copyList(const List<T>& other)
 {
-	m_first = other.m_first;
-	m_last = other.m_last;
-	m_nodeCount = other.m_nodeCount;
+	for (Iterator<T> iter = other.begin(); iter != other.end(); iter++)
+		pushBack(*iter);
 }
